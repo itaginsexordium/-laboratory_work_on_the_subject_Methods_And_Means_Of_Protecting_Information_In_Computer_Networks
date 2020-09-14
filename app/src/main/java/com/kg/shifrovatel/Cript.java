@@ -4,25 +4,24 @@ import java.util.Arrays;
 
 public class Cript {
     private static String ALPHABET = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяabcdefghijklmnopqrstuvwxyz";
-    private char[] charArray = ALPHABET.toCharArray();
-    private char[] textCharArray, textCipherToIntNumbers;
-
+    private char[] ALPHABET_ARRAY;
+    private char[] textCharArray, textCipher;
 
     public String criptText(String text) {
         text.toLowerCase();
 
-        charArray = ALPHABET.toCharArray();
+        ALPHABET_ARRAY = ALPHABET.toCharArray();
         textCharArray = text.toCharArray();
-        textCipherToIntNumbers = new char[textCharArray.length];
+        textCipher = new char[textCharArray.length];
 
         for (int i = 0; i <= textCharArray.length - 1; i++) {
-            for (int j = 0; j < charArray.length - 1; j++) {
-                if (textCharArray[i] == charArray[j]) {
-                    textCipherToIntNumbers[i] = charArray[j + 3];
+            for (int j = 0; j < ALPHABET_ARRAY.length - 1; j++) {
+                if (textCharArray[i] == ALPHABET_ARRAY[j]) {
+                    textCipher[i] = ALPHABET_ARRAY[j + 3];
                 }
             }
         }
-        text = Arrays.toString(textCipherToIntNumbers).replaceAll("\\[|\\]|,|\\s", "");
+        text = Arrays.toString(textCipher).replaceAll("\\[|\\]|,|\\s", "");
         return text;
     }
 
@@ -32,18 +31,18 @@ public class Cript {
     public String decriptText(String text){
         text.toLowerCase();
 
-         charArray = ALPHABET.toCharArray();
+         ALPHABET_ARRAY = ALPHABET.toCharArray();
          textCharArray = text.toCharArray();
-         textCipherToIntNumbers = new char[textCharArray.length];
+         textCipher = new char[textCharArray.length];
 
         for (int i = 0; i <= textCharArray.length - 1; i++) {
-            for (int j = 0; j < charArray.length - 1; j++) {
-                if (textCharArray[i] == charArray[j]) {
-                    textCipherToIntNumbers[i] = charArray[j - 3];
+            for (int j = 0; j < ALPHABET_ARRAY.length - 1; j++) {
+                if (textCharArray[i] == ALPHABET_ARRAY[j]) {
+                    textCipher[i] = ALPHABET_ARRAY[j - 3];
                 }
             }
         }
-        text = Arrays.toString(textCipherToIntNumbers).replaceAll("\\[|\\]|,|\\s", "");
+        text = Arrays.toString(textCipher).replaceAll("\\[|\\]|,|\\s", "");
         return text;
     }
 
